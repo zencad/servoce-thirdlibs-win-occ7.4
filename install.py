@@ -3,10 +3,22 @@
 import os
 import shutil
 
-dirpath = "C:/ProgramFiles/servoce-third-libs"
+print("APPDATA:", os.getenv("APPDATA"))
+dirpath = os.path.join(os.getenv("APPDATA"), "servoce-third-libs")
+print("DIRPATH:", dirpath)
 
-os.mkdir(dirpath)
+if not os.path.exists(dirpath):
+	os.mkdir(dirpath)
 
-shutil.copytree("lib", os.path.join(dirpath, "lib"))
-shutil.copytree("include", os.path.join(dirpath, "include"))
-shutil.copytree("dll", os.path.join(dirpath, "dll"))
+print("copy lib to", os.path.join(dirpath, "lib"))
+shutil.copytree("lib", os.path.join(dirpath, "lib"), dirs_exist_ok=True)
+
+print("copy include to", os.path.join(dirpath, "include"))
+shutil.copytree("include", os.path.join(dirpath, "include"), dirs_exist_ok=True)
+
+print("copy dll to", os.path.join(dirpath, "dll"))
+shutil.copytree("dll", os.path.join(dirpath, "dll"), dirs_exist_ok=True)
+
+dllpath = "../../pyservoce/libs";
+print("copy dll to", dllpath)
+shutil.copytree("dll", dllpath, dirs_exist_ok=True)
