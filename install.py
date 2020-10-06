@@ -19,6 +19,6 @@ shutil.copytree("include", os.path.join(dirpath, "include"), dirs_exist_ok=True)
 print("copy dll to", os.path.join(dirpath, "dll"))
 shutil.copytree("dll", os.path.join(dirpath, "dll"), dirs_exist_ok=True)
 
-dllpath = "../../pyservoce/libs";
+dllpath = "../../pyservoce";
 print("copy dll to", dllpath)
 shutil.copytree("dll", dllpath, dirs_exist_ok=True)
